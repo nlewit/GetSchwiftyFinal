@@ -1,6 +1,6 @@
 import {Board} from "./Board.js"
 
-class ReversalCalculator{
+export class ReversalCalculator{
     constructor(board, boardAsList, numRows){
         this.board = board
         this.boardAsList = boardAsList
