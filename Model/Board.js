@@ -8,6 +8,7 @@ export class Board{
         this.board = []
         this.isNumberBoard = true
         this.boardAsList = []
+        this.zeroSqaure = {}
     }
 
  /*   constructor(num_rows, identifiers){
@@ -37,6 +38,8 @@ export class Board{
 
         if(generated != 0){
             this.boardAsList.push(square)
+        } else {
+            this.zeroSqaure = square
         }
 
         arr.push(square)
