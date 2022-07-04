@@ -20,10 +20,10 @@ export class Board{
          this.isNumberBoard = false
      } */
 
-    //Note: Remember to deal with the 0 and not print it
     addToList(arr){
         let generated = 0
         let square = {}
+        this.usedIdentifiers = []
         do {
             generated = Math.floor(Math.random()*this.numLimit)
         } while(this.usedIdentifiers.includes(generated));
@@ -46,7 +46,8 @@ export class Board{
     }
 
     gameBoard(){
-
+        this.board = []
+        this.boardAsList = []
         for (let index = 0; index < this.numRows; index++) {
             let arr =[]
             for (let inside_index = 0; inside_index < this.numRows; inside_index++) {

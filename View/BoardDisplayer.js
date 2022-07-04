@@ -21,7 +21,3 @@ export class BoardDisplayer{
         document.body.appendChild(btn);
     }
 }
-let board = new Board(3)
-let gameBoard = board.gameBoard()
-let displayer = new BoardDisplayer()
-displayer.displayBoard(gameBoard)
