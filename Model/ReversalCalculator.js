@@ -1,17 +1,13 @@
-import {Board} from "./Board.js"
-
 export class ReversalCalculator{
-    constructor(board, boardAsList, numRows){
-        this.board = board
-        this.boardAsList = boardAsList
+    constructor(numRows){
         this.numRows = numRows
     }
 
-    getNumReversals(){
+    getNumReversals(boardAsList){
         let totalReversals = 0
-        for (let index = 0; index < this.boardAsList.length - 1; index++) {
-            for (let compared = index + 1; compared < this.boardAsList.length; compared++) {
-                if(this.boardAsList[index].identifier > this.boardAsList[compared].identifier){
+        for (let index = 0; index < boardAsList.length - 1; index++) {
+            for (let compared = index + 1; compared < boardAsList.length; compared++) {
+                if(boardAsList[index].identifier > boardAsList[compared].identifier){
                     totalReversals++
                 }
             }
@@ -20,10 +16,10 @@ export class ReversalCalculator{
         return totalReversals
     }
 
-    getBlankSquareRow(){
+    getBlankSquareRow(board){
         let rowIndex = 0
         let rowCounter = 0
-        this.board.forEach(row => {
+        board.forEach(row => {
             row.forEach(square => {
                 if(square.identifier == 0){
                     rowIndex = rowCounter + 1
@@ -35,17 +31,12 @@ export class ReversalCalculator{
         return rowIndex
     }
 
-    isSolvable(){
-        let score = this.getNumReversals()
+    isSolvable(board, boardAsList){
+        let score = this.getNumReversals(boardAsList)
 
         if(this.numRows % 2 == 0){
-            score += this.getBlankSquareRow()
+            score += this.getBlankSquareRow(board)
         }
         return (score % 2 == 0)
     }
 }
-
-let board  = new Board(3)
-let gameBoard = board.gameBoard()
-let calculator = new ReversalCalculator(gameBoard, board.boardAsList, board.numRows)
-console.log(calculator.isSolvable())

@@ -52,9 +52,3 @@ export class ActionManager{
         return this.board
     }
 }
-
-let board  = new Board(3)
-let gameBoard = board.gameBoard()
-let manager = new ActionManager(gameBoard)
-gameBoard = manager.onClickAction(gameBoard[1][1])
-console.log(gameBoard)
