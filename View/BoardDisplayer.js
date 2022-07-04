@@ -1,4 +1,15 @@
+import { Board } from "../Model/Board.js";
+
 export class BoardDisplayer{
+
+    displayBoard(board){
+        for (let row = 0; row < board.length; row++) {
+            for (let square = 0; square < board[row].length; square++) {
+                this.createButton(board[row][square].identifier)
+            }
+            
+        }
+    }
 
     createButton(button_display){
         let btn = document.createElement("button")
@@ -11,6 +22,7 @@ export class BoardDisplayer{
         document.body.appendChild(btn);
     }
 }
-
+let board = new Board(3)
+let gameBoard = board.gameBoard()
 let displayer = new BoardDisplayer()
-displayer.createButton("hi")
+displayer.displayBoard(gameBoard)
