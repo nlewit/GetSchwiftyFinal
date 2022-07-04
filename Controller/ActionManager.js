@@ -4,7 +4,6 @@ import {Square} from "../Model/Square.js"
 export class ActionManager{
     constructor(board){
         this.board = board
-
     }
 
     findIndices(square){
@@ -13,18 +12,15 @@ export class ActionManager{
             for (let squareIndex = 0; squareIndex < this.board[0].length; squareIndex++) {
                 compSquare = this.board[rowIndex][squareIndex]
                if(compSquare.identifier == square.identifier){
-                   console.log("16 found " + rowIndex + " " + squareIndex)
                    return {row : rowIndex, column : squareIndex}
                }
             }
         }
-       console.log("21 not found")
        return {row : 0, column : 0}
     }
 
     isSquareInRange(squareIndices){
         let zeroIndices = this.findIndices(new Square(0))
-        console.log( "27 " + zeroIndices)
         let rowDiff = Math.abs(squareIndices.row - zeroIndices.row)
         let colDiff = Math.abs(squareIndices.column - zeroIndices.column)
         let isInRange = false
