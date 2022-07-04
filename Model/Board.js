@@ -1,21 +1,22 @@
 import {Square} from "./Square.js"
 
-class Board{
-    constructor(num_rows){
-        this.num_rows = num_rows
-        this.used_identifiers = []
-        this.num_limit = Math.pow(num_rows, 2)
+export class Board{
+    constructor(numRows){
+        this.numRows = numRows
+        this.usedIdentifiers = []
+        this.numLimit = Math.pow(numRows, 2)
         this.board = []
         this.isNumberBoard = true
+        this.boardAsList = []
     }
 
  /*   constructor(num_rows, identifiers){
-   //      this.num_rows = num_rows
-  //       this.identifiers = identifiers
-    //     this.used_identifiers = identifiers.keys()
-   //      this.num_limit = Math.pow(num_rows, 2) - 1
-   //      this.board = []
-  //       this.isNumberBoard = false
+         this.num_rows = num_rows
+         this.identifiers = identifiers
+         this.used_identifiers = identifiers.keys()
+         this.num_limit = Math.pow(num_rows, 2) - 1
+         this.board = []
+         this.isNumberBoard = false
      } */
 
     //Note: Remember to deal with the 0 and not print it
@@ -23,34 +24,34 @@ class Board{
         let generated = 0
         let square = {}
         do {
-            generated = Math.floor(Math.random()*this.num_limit)
-        } while(this.used_identifiers.includes(generated));
+            generated = Math.floor(Math.random()*this.numLimit)
+        } while(this.usedIdentifiers.includes(generated));
 
         console.log(generated)
-        this.used_identifiers.push(generated)
+        this.usedIdentifiers.push(generated)
         if(this.isNumberBoard){
             square = new Square(generated)
         } else {
             square = new Square({identifier : generated, data : this.identifiers[generated]})
         }
+
+        if(generated != 0){
+            this.boardAsList.push(square)
+        }
+
         arr.push(square)
     }
 
     gameBoard(){
 
-        for (let index = 0; index < this.num_rows; index++) {
+        for (let index = 0; index < this.numRows; index++) {
             let arr =[]
-            for (let inside_index = 0; inside_index < this.num_rows; inside_index++) {
+            for (let inside_index = 0; inside_index < this.numRows; inside_index++) {
                 this.addToList(arr)
             }
 
             this.board.push(arr)
         }
-        console.log("Finished")
-        return board
+        return this.board
     }
 }
-
-let board  = new Board(3)
-let gameBoard = board.gameBoard()
-console.log(gameBoard)
