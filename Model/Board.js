@@ -9,14 +9,14 @@ class Board{
         this.isNumberBoard = true
     }
 
- //   constructor(num_rows, identifiers){
+ /*   constructor(num_rows, identifiers){
    //      this.num_rows = num_rows
   //       this.identifiers = identifiers
     //     this.used_identifiers = identifiers.keys()
    //      this.num_limit = Math.pow(num_rows, 2) - 1
    //      this.board = []
   //       this.isNumberBoard = false
- //    }
+     } */
 
     //Note: Remember to deal with the 0 and not print it
     addToList(arr){
